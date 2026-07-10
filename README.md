@@ -30,8 +30,8 @@ part of this repo.
 Clone this repo, then copy the `trello/` folder into your Claude skills directory:
 
 ```bash
-git clone https://github.com/<your-username>/trello-claude-skill.git
-cd trello-claude-skill
+git clone https://github.com/<your-username>/trello-skill.git
+cd trello-skill
 mkdir -p ~/.claude/skills
 cp -r trello ~/.claude/skills/trello
 ```
