@@ -48,7 +48,7 @@ Add this repo as a marketplace and install in two commands from inside Claude Co
 
 ```
 /plugin marketplace add towfikul-islam/trello-skill
-/plugin install trello@towfik-plugins
+/plugin install trello@towfik
 ```
 
 Then run `/reload-plugins`. Skills are namespaced, so invoke them as `/trello:...` or just mention Trello naturally and Claude picks up the skill.
