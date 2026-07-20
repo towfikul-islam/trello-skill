@@ -2,7 +2,7 @@
 
 **Give Claude Code direct Trello access — no MCP server, no background process.**
 
-Download attachment bytes, upload local files, post comments, and drive cards through their whole lifecycle straight from a Claude Code session. Two files dropped into `~/.claude/skills/` and you're done.
+Download attachment bytes, upload local files, post comments, and drive cards through their whole lifecycle straight from a Claude Code session. Install in one command via the Claude plugin marketplace, or drop the files into `~/.claude/skills/` manually.
 
 ---
 
@@ -42,18 +42,29 @@ Skills work across the Claude ecosystem — **Claude Code, Claude.ai, and the Cl
 
 ## Install
 
-### 1. Put the skill files in place
+### Option A — Plugin marketplace (recommended)
+
+Add the community marketplace and install in two commands from inside Claude Code:
+
+```
+/plugin marketplace add anthropics/claude-plugins-community
+/plugin install trello@claude-community
+```
+
+Then run `/reload-plugins`. Skills are namespaced, so invoke them as `/trello:...` or just mention Trello naturally and Claude picks up the skill.
+
+### Option B — Manual (classic)
 
 ```bash
 git clone https://github.com/towfikul-islam/trello-skill.git
 cd trello-skill
 mkdir -p ~/.claude/skills
-cp -r trello ~/.claude/skills/trello
+cp -r skills/trello ~/.claude/skills/trello
 ```
 
 You should now have `~/.claude/skills/trello/SKILL.md` and `~/.claude/skills/trello/trello.sh`.
 
-### 2. Get your Trello API key + token
+### 2. Get your Trello API key + token (both options)
 
 Open **https://trello.com/power-ups/admin/new** and fill in the **New App** form. Only *App name* and *Workspace* matter for personal use; **Email**, **Support contact**, **Author**, and the optional **Iframe connector URL** can be anything or left blank. Click **Create**.
 
@@ -85,7 +96,9 @@ cp .trello.env.example ~/.claude/.trello.env
 With the key and token set, fetch your member ID and paste it into the same file:
 
 ```bash
-source ~/.claude/skills/trello/trello.sh
+source ~/.claude/skills/trello/trello.sh   # manual install
+# OR (plugin install): trello.sh is on PATH — just run:
+# source trello.sh
 tr_get "/1/members/me?fields=id,username"
 ```
 
@@ -94,7 +107,7 @@ Copy the `id` from the output into `TRELLO_MEMBER_ID` in `~/.claude/.trello.env`
 ### 5. Verify
 
 ```bash
-source ~/.claude/skills/trello/trello.sh
+source ~/.claude/skills/trello/trello.sh   # manual install; plugin install: source trello.sh
 tr_me        # -> your username + full name
 tr_boards    # -> your boards and their IDs
 ```
