@@ -47,7 +47,7 @@ Skills work across the Claude ecosystem — **Claude Code, Claude.ai, and the Cl
 Add this repo as a marketplace and install in two commands from inside Claude Code:
 
 ```
-/plugin marketplace add towfikul-islam/trello-skill
+/plugin marketplace add towfikul-islam/plugins
 /plugin install trello@towfik
 ```
 
