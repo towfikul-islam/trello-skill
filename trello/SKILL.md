@@ -26,6 +26,7 @@ tr_card   SHORTLINK [fields]  # ONE card by shortlink/ID (default: name,desc,sho
 tr_atts   CARD_ID             # attachments (id, name, bytes, mime)
 tr_dl     CARD_ID ATT_ID FILENAME OUTPATH   # download bytes (auth header)
 tr_comment CARD_ID "text"|FILE      # post comment -> returns action JSON (capture .id). Use a FILE path (Write tool, UTF-8) for anything non-trivial/non-ASCII.
+tr_comment_update ACTION_ID "text"|FILE  # edit existing comment (ACTION_ID from tr_comment response)
 tr_card_update CARD_ID name=FILE [desc=FILE]   # update title/description -> same FILE-path rule
 tr_upload  CARD_ID FILEPATH   # attach local file to card
 tr_get    "/1/..."            # raw passthrough for unwrapped endpoints
@@ -35,7 +36,8 @@ tr_mine_board  BOARD_ID       # cards on a whole board assigned to me
 tr_card_create LIST_ID NAME|FILE [DESC_FILE]   # create card -> JSON (capture .id, .shortUrl)
 tr_checklist_add CARD_ID NAME                  # add checklist -> JSON (capture .id)
 tr_checkitem_add CHECKLIST_ID NAME|FILE        # add item at bottom
-tr_checkitems CHECKLIST_ID                     # list items (id, name, state)
+tr_card_checklists CARD_ID                     # list checklists with id,name (use .id as CHECKLIST_ID below)
+tr_checkitems CHECKLIST_ID                     # list items (id, name, state) — takes CHECKLIST_ID, not card ID
 tr_checkitem_set CARD_ID ITEM_ID complete|incomplete [NAME|FILE]  # tick / untick
 tr_card_move CARD_ID LIST_ID                   # advance lifecycle (In Progress->Review->Done)
 ```
