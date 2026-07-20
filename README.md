@@ -44,14 +44,16 @@ Skills work across the Claude ecosystem — **Claude Code, Claude.ai, and the Cl
 
 ### Option A — Plugin marketplace (recommended)
 
-Add the community marketplace and install in two commands from inside Claude Code:
+Add this repo as a marketplace and install in two commands from inside Claude Code:
 
 ```
-/plugin marketplace add anthropics/claude-plugins-community
-/plugin install trello@claude-community
+/plugin marketplace add towfikul-islam/trello-skill
+/plugin install trello@towfik-plugins
 ```
 
 Then run `/reload-plugins`. Skills are namespaced, so invoke them as `/trello:...` or just mention Trello naturally and Claude picks up the skill.
+
+> **Community marketplace:** Submission to `anthropics/claude-plugins-community` is pending review. Once approved, you'll also be able to install with `/plugin install trello@claude-community`.
 
 ### Option B — Manual (classic)
 
